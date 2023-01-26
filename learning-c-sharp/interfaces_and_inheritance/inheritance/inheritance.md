@@ -202,3 +202,23 @@ class Sedan : Vehicle
 ```
 
 This code will **ONLY** work if the constructor `Vehicle()` exists. If it doesn’t, then an error will be thrown.
+
+---
+
+## Override Inherited Members
+Say that we wanted to make one more vehicle that operates a bit differently than a sedan or truck. We want to use most of the members in `Vehicle`, but we need to write new versions of `SpeedUp()` and `SlowDown()`.
+
+What we want is to override an inherited method. To do that, we use the `override` and `virtual` modifiers.
+
+In the superclass, we mark the method in question as `virtual`, which tells the computer *“this member might be overridden in subclasses”*:
+
+```cs
+public virtual void SpeedUp()
+```
+In the subclass, we mark the method as `override`, which tells the computer *“I know this member is defined in the superclass, but I’d like to override it with this method”*:
+
+```cs
+public override void SpeedUp()
+```
+
+---
