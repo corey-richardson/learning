@@ -1,0 +1,40 @@
+   score  completed    lesson
+0   82.7       35.0  Lesson A
+1   65.2       31.0  Lesson A
+2   55.3       33.0  Lesson A
+3   28.8       25.0  Lesson B
+4   31.2       18.0  Lesson B
+Intercept    13.214113
+completed     1.306826
+dtype: float64
+0    39.350625
+dtype: float64
+0     58.953009
+1     53.725706
+2     56.339358
+3     45.884753
+4     36.736974
+        ...
+95    53.725706
+96    82.475869
+97    43.271102
+98    40.657450
+99    51.112055
+Length: 100, dtype: float64
+0     23.746991
+1     11.474294
+2     -1.039358
+3    -17.084753
+4     -5.536974
+        ...
+95     6.274294
+96    -6.675869
+97   -15.871102
+98     5.942550
+99     6.187945
+Length: 100, dtype: float64
+Intercept             59.220
+lesson[T.Lesson B]   -11.642
+dtype: float64
+Lesson A Mean: 59.220000
+Lesson B Mean: 47.578000

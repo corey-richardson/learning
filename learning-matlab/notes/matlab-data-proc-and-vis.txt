@@ -1,0 +1,238 @@
+% Mathworks' MATLAB for Data Processing and Visualisation
+
+tbl = readtable("filename",...,"TextType","string")
+hurrs = readtable("hurricaneData90s.txt","TextType","string")
+
+tbl = readtable("hurricaneData90s.txt",...
+     "TextType","string",...
+     "NumHeaderLines",5)
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%% Graphics Functions %%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%
+% Scatter plots %
+%%%%%%%%%%%%%%%%%
+% Scatter plot of windspeed vs pressure with red filled markers of size 100
+scatter(ws,pr,100,"r","filled")
+% with alpha / transparancy 50%
+scatter(ws,pr,100,"r","filled","MarkerFaceAlpha",0.5)
+% the cat variable contains the category of the hurricane for each reading
+% ...with the sizes of the markers defined by (cat+1)*10
+scatter(ws,pr,(cat+1)*10)
+%  use elapsedTime to define the color of filled in markers
+scatter(ws,pr,(cat+1)*10,elapsedTime,"filled")
+colorbar
+
+%%%%%%%%%%%
+% Barplot %
+%%%%%%%%%%%
+bar(world)
+% Red Barplot
+bar(world,"FaceColor","r")
+% Set colour for each bar
+colors = [0 0 1; 1 0 0; 1 0 0; 1 0 0;]
+bar(world,"FaceColor","flat","CData",colors)
+% Add another barplot to the same axes
+% Colour Black
+hold on
+bar(us,"FaceColor","k")
+hold off
+% Change barwidth
+% Defaults to 0.8
+bar(us,"FaceColor","k","BarWidth",0.5)
+% Set edge colour to white
+bar(us,"FaceColor","k","BarWidth",0.5,"EdgeColor","w")
+
+%%%%%%%%%%%%%%
+% Histograms %
+%%%%%%%%%%%%%%
+histogram(ws)
+% Histogram with BinWidth of 5
+histogram(ws,"BinWidth",5)
+% create a histogram of the windspeeds with 15 bins
+histogram(ws,15)
+% Compare windspeed at sea and land using a probability normalisation
+histogram(seaWS,15,"Normalization","probability")
+hold on
+histogram(landWS,15,"Normalization","probability")
+hold off
+% Legend
+legend("Sea","Land")
+
+%%%%%%%%%%%%%%%%%%
+% Comparing Data %
+%   in Columns   %
+%%%%%%%%%%%%%%%%%%
+grps = "All Events" , "US Events"
+labs = "1800s" , "First half of 1900's" , "Second half of 1900's" , "2000s"
+% Create a bar plot where the bars are grouped by "All Events" and "US Events". 
+% Use the grps variable to label the groups of bars and the labs variable for
+% a legend defining the colors.
+bar(avgEventsPerDecade)
+xticklabels(grps)
+legend(labs)
+
+% Now, group the bars by half-centuries and let color differentiate between
+% all events and US events.  Use the appropriate x-tick and legend labels.
+bar(avgEventsPerDecade')
+xticklabels(labs)
+legend(grps)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Customizing Graphics Objects %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% create a handle to a graphics object by assigning the output from a
+% visualization function to a variable
+p = plot(numEvents,"o")
+% plot hurricane ike trajectory overlapped on a map
+g = geoscatter(ikeLat, ikeLon)
+
+% you can get the current axes with "gca"
+ax = gca
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Modifying Graphics Properties %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Line Properties
+p = plot(numEvents)
+% save the LineStyle property of p to the variable lnSt
+lnSt = p.LineStyle
+% set the LineStyle property of p to ":" and set the Marker property to "*"
+p.LineStyle = ":"
+p.Marker = "*"
+
+%% Axes Properties
+% can also use dot notation to update the data used in the plot
+% useful when you are creating animations or obtaining new data to add to the line plot at regular intervals
+lineObj.XData(k) = newValue  
+lineObj.XData([k1 k2]) = [x1 x2]
+lineObj.XData = newValues
+% e.g.
+p.YData(end+1) = the2010s
+% or
+p.YData = [p.YData the2010s]
+
+% create a variable, med, that contains the median of the data in the YData property of p
+% create a horizontal line at med using dashed lines and with the label "Median"
+% Assign the output of yline to y
+med = median(p.YData)
+y = yline(med,"--","Median")
+% set the LabelHorizontalAlignment property of y to "left"
+y.LabelHorizontalAlignment = "left"
+
+% extract the XTick property of the current axes, and assign it to the variable xt
+ax = gca % get current axis
+xt = ax.XTick
+
+
+%% Text Properties
+ax.XTickLabel = decades
+ax.FontName = "Garamond"
+fontsize(ax,"decrease")
+% Set the font size of the axes to half its current value
+ax.FontSize = ax.FontSize / 2
+ax.TitleFontSizeMultiplier = 2
+
+% You can extract properties of a single axis with dot notation
+axesHandle.XAxis.Limits
+% Save the FontWeight of the y-axis to the variable yFW
+yFW = ax.YAxis.FontWeight
+ax.YAxis.Direction = "reverse"
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Customising Multiple Graphics %
+%      Objects on an axis       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+g = geoplot(ikeLat, ikeLon)
+g.LineStyle = ":"
+g.LineWidth = 1.5
+hold on
+gs = geoscatter(ikeLat, ikeLon,"filled")
+hold off
+gs.SizeData = ikeWS % set marker size to correspond to windspeed
+gs.CData = g.Color * 0.75 % set colour of geoscatter plot to x0.75 of geoplot colours
+ax.Basemap = "bluegreen" % set underlying maps colours to sea and land
+
+gs.CData = ikeWS;
+colorbar
+%            R    G    B
+red_green = [1    0    0
+             0.75 0.25 0
+             0.50 0.50 0
+             0.25 0.75 0
+             0    1    0]
+colormap(red_green)
+
+geoscatter(ikeLat,ikeLon,ikeWS,"filled")
+ax = gca
+latLim = ax.LatitudeLimits % y lims for geoscatter
+lonLim = ax.LongitudeLimits % x lims for geoscatter
+geoscatter(ikeLat(1),ikeLon(1))
+geolimits(latLimits,lonLimits)
+
+b = bar(avgEventsPerDecade)
+xticklabels(grps)
+legend(labs)
+bar2 = b(2) % take second bar from barplot
+% If you want to set the properties of all of the elements of a graphics
+% array at the same time, you can use the set function.
+set(grArray,Property,newValue)
+set(b,"FaceAlpha",0.5)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Graphics Object Hierarchy %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% create a figure handle
+f = figure
+f.Color = [0 0 0] % change figure bg colour to black
+
+f = gcf % get current figure
+theBabies = f.Children
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

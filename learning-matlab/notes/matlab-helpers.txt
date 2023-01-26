@@ -1,0 +1,692 @@
+% comment
+%% bold comment
+
+% camelCase
+%  ; used to hide command from output
+
+x = [1,2,3,4,5] % row vector
+y = [1;2;3;4;5] % column vector
+z = [1:5] % 1 to 5
+a = [1:0.5:5] % start value, step, end value
+b = linspace(1,10,5) % start, end, len
+
+column_vector = row_vector' % transpose
+x=rand(5) % 5x5 matrix of random numbers
+y = rand(5,1) % 5x1 matrix of random numbers
+z = zeros(6,3) % 6x3 matrix of zeroes
+size(matrix) 
+
+% indexing
+array(n)
+array(m:n)
+matrix(y,x)
+matrix(y,:)
+matrix(:,x)
+
+floor() % round own
+ceiling() round up
+
+r=v1+1 
+vs=v1+v2 
+vm=max(va)
+vr = round(va)
+
+% .* operator allows you to multiply equal sized arrays
+mass = density .* va
+
+a_size = size(a)
+[xrow,xcol] = size(x)
+[xMax,idx] = max(x)
+[~,ivMax] = max(v2) % if only one output is needed you can mute it with tilde ~
+
+% get values from v1 which are < 4
+z = v1(v1<4)
+% if value of v1 is less than 4, replace with 0
+v1(v1<4) = 0
+
+% & is and
+% | is or
+
+x = randi(range,size1,size2)
+% doc randi
+
+plot(sample,mass1)
+plot(sample,mass2,"r--o") % red dashed line with circle markers
+
+% each plot goes to a different figure, unless:
+plot(sample,mass2,"r--o")
+hold on
+plot(sample,mass1,"ks") % black square markers, no line
+
+hold off
+
+plot(array) % plots 1-n on x-axis against array on y-axis
+plot(v1,"LineWidth",3)
+plot(sample,v1,"r-o","LineWidth",4)
+
+title("_")
+xlabel("_")
+ylabel("_")
+legend("a","b","c")
+
+x = -4
+if x >= 0
+    xSqrt = sqrt(x)
+elseif x < 5
+    % do this
+else
+    % do this  
+end
+
+for x = 1:5
+    % do this
+end
+
+% for loops not always needed, could use array operators
+x = 1:5
+xSq = x.^2
+
+disp("Hello world!")
+
+% oop
+
+properties(x)
+methods(x)
+
+function obj = classname(in1,in2,...)
+    obj.Property1 = in1;
+    obj.Property2 = in2;
+    ...
+end
+
+classdef classname
+    properties
+        PropertyName (size) type {check1, check2, ...} = defaultvalue
+    end
+end
+
+properties
+    Property1 string
+    Property2 double
+    Property3 logical
+end
+
+properties
+    Scalar (1,1) double
+    Matrix (3,5) double
+    RowVector (1,:) double
+    FourColMatrix (:,4) double
+end
+
+properties
+    PositiveNumber (1,1) double {mustBePositive}
+    IntegerMatrix (3,5) double {mustBeInteger}
+    RealVector (1,:) double {mustBeReal, mustBeFinite}
+end
+
+properties (SetAccess = private)
+    Status (1,1) string
+    Participant (1,1) string
+    Course (1,1) course
+    Timestamps (:,1) datetime
+end
+properties (SetAccess = immutable)
+    SerialNumber (1,1) uint32
+end
+
+
+x = a:dx:b		% When element spacing dx is known, dx defaults to 1
+x = linspace(a,b,n)	% When number of elements n is known, n defaults to 100
+A = 0:5:12 --> 0 5 10
+
+x = ones(3,4)
+x = ones(3,4) * 5
+xU = rand(100,1) % uniformly distributed array of 100x1
+xN = randn(100,1) % normally distributed array of 100x1
+xI = randi(10,100,1) % 100x1 array of random ints upto 10
+x = randi([minVal maxVal],m,n)
+x = a + (b-a)*rand(m,n) % uniformally distributed between a and b, e.g.
+xU2 = -1 + (1--1)*rand(100,1) % between -1 and 1
+x = M + sd*randn(m,n) % normally distributed with mean M and standard deviation sd, e.g.
+xN2 = 100 + 5*randn(100,1) % mean of 100, sd of 5
+
+% contacenating matrices
+BC = [B C] % same number of rows
+CA = [C;A] % same number of columns
+CR = [C; 10 11 12] % append to bottom
+
+% reshape(array,new rows,new cols)
+A = reshape(a,r,c)
+B = reshape(b,r,[]) % unspecified columns
+C = c(:) % create column vector from c
+% Matlab takes data column-wise, to take it row-wise first transpose the matrix
+E = reshape(A',1,[])
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Create the following 7x7 matrix M
+% 1   8  15   3   3   3   3
+% 2   9  16   3   3   3   3
+% 3  10  17   3   3   3   3
+% 4  11  18   3   3   3   3
+% 5  12  19  10  20  30  40
+% 6  13  20  10  20  30  40
+% 7  14  21  10  20  30  40
+
+first_3_cols = 1:21;
+first_3_cols = reshape(first_3_cols,7,3) % 1-21 arrange into 3 columns of 7
+threes = ones(4,4) * 3 % 4x4 grid of 3
+tens = (1:4) * 10;
+tens = [tens;tens;tens] % 3 rows of (1-4)*10
+threes_tens = [threes;tens] % combine
+M = [first_3_cols threes_tens] % combine
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+avg1990 = mean(firstYear)
+missing2019 = isnan(lastYear)
+numNaNs = nnz(missing2019) % number non zero
+avg2019 = mean(lastYear,"omitnan")
+
+[diffSorted,sortedIdx] = sort(usageDiff,"descend") % largest to smallest
+
+% To get the mean of each row, specify 2 as the second input.
+% Dimension 2
+mean(M,2)
+mean(M,2,"omitnan")
+
+monthly = mean(usage,2,"omitnan")
+bar(monthly)
+
+% To calculate a row statistic, specify the dimension as 2.  
+min(A,[],dim)
+minUsage = min(usage,[],2)
+maxUsage = max(usage,[],2)
+
+% You can also get the mean, minimum, and maximum, of all of the 
+% elements in array by specifying the dimension as "all".
+minUse = min(usage,[],"all")
+maxUse = max(usage,[],"all")
+avgUse = mean(usage,"all","omitnan")
+
+diff1990 = diff(firstYear)
+plot(diff1990)
+
+% weighted average
+% First you need to create a weight vector that assigns a percentage 
+% of the inflation to each year.
+weighted = dollar2019' ./ sum(dollar2019')
+% Calculate the average with inflation, a, by multiplying price and weighted.
+a = price * weighted
+
+% with matrices, Ax != xA
+x=B/A  % Solves x*A = B (for x)
+x=A\B  % Solves A*x = B (for x)
+requiredPop = popChange \ loonGoal
+
+[maxSd,monthSd] = max( std(tempData) )
+[maxR, monthMaxR] = max( max(tempData)-min(tempData) )
+
+
+
+% Stair plot
+stairs(Year, Aus_Can)
+% Stem plot
+stem(Year, Aus_Can)
+% Area plot
+area(Year, Aus_Can)
+
+scatter(Australia, Canada) % Scatter plot
+scatter(Australia, Canada, 100) % Scatter plot with marker size 100
+scatter(Australia, Canada, 50,"r") % Scatter plot with red markers of size 500
+
+scatter(Australia, Canada, 50, Year)
+colorbar
+
+rowVec = ["January", "April", "July", "October"]
+colVec = rowVec'
+mat = [rowVec(1:2) ; rowVec(3:4)]
+
+% "January" "April"
+% "July"    "October"
+
+bar(monthly) % Jan --> Dec, 12 values
+xticks([1 4 7 10])
+xticklabels(["January","April","July","October"])
+xtickangle(90)
+
+xlabel()
+ylabel()
+title()
+
+plot(x,y,"o-","MarkerSize",10,"MarkerFaceColor","green")
+plot(x,y,"ko-") % black solid line with circle markers
+plot(x,y,"color",[0.5 0.6 0])
+plot(x,y,"o-","color",[0.6 0.2 0.8],"MarkerEdgeColor","c") % Plot the data with cyan circular markers  							   
+	% and a solid line with the custom color 							 	   
+	% [0.6 0.2 0.8]
+plot(revenue,"r:o") % red dotted line with cirlce markers
+
+xyLims = axis % Get current x/y limits
+xlim([a b]) % e.g --> xlim([2001 xyLims(2)])
+ylim([c d]) % e.g --> ylim([0 xyLims(4)])
+axis tight % Change the axis limits to match the smallest and the largest values in the data.
+axis equal
+axis square
+axis normal
+
+% 3d plots
+surf(revenue) OR surf(yr,mth,revenue)
+mesh(yr,mth,revenue)
+contour(yr,mth,revenue)
+
+% Conditional Data Selection
+homewinning = homeWins > homeLosses
+awaywinning = awayWins > awayLosses
+winning = homewinning & awaywinning % select teams where they have a positive home and away record
+homewinningonly = homewinning & ~awaywinning % select teams where they have a positive home but NOT away record
+% or |
+w = x > 12 | y >= 6
+
+hwLast10 = any( homewinning(11:end) ) % big OR gate, if ANY true, then true
+hwTop10 = all( homewinning(1:10) )    % big AND gate, if any are false, then false
+
+x5 = x > 5
+bigcol = all(x5) % cols where all values > 5
+bigrow = all(x5,2) % rows where all values > 5
+totalbig = nnz(x5) % number of values > 5
+colsum = sum(x5) %  the number of values greater than 5 in each column of x
+
+place = find(homewinningonly) % --> 5 9 12 18
+
+idx = find(v,n,dirn)
+place = find(homewinningonly,3,"last")
+
+% Selecting Teams with Winning Home Record
+homewinning =  homeWins > homeLosses
+homewinningTeams = Team(homewinning)
+% create a logical array "homewinning" stating whether a team has more home wins than home losses 
+% Select teams where homewinning is true
+
+
+EPL = readtable("EPLresults.xlsx")
+EPL = readtable("EPLresults.csv","TextType","string")
+summary(EPL)
+
+% Create a table named teamWins with variables team and w.
+teamWins = table(team,w)
+stats = array2table(WDL) % matrix to a table
+stats = array2table(WDL,"VariableNames",["Wins","Draws","Losses"])
+winners = sortrows(EPL,"HomeWins") % EPL sorted by HomeWins (low to high)
+winners = sortrows(EPL,"HomeWins","descend") % (high to low)
+
+winners = sortrows(EPL,["HomeWins","AwayWins"],"descend") % sort by "HomeWins", if tied then sort by secondary variable "AwayWins"
+
+EPL(:,["HomeGF","HomeGA"]) = []
+EPL = removevars(EPL,["AwayGF","AwayGA"])
+
+EPL = EPL(:,[1 2 5 3 6 4 7]) % reorder
+
+totWins = EPL.HomeWins + EPL.AwayWins
+EPL.TotalWins = totWins % add new column
+EPL.TotalDraws = EPL.HomeDraws + EPL.AwayDraws
+
+EPL{:,["TotalGF","TotalGA"]} = [totGF,totGA] % add multiple columns
+
+EPL = movevars(EPL,"GoalDiff","After","Points")
+
+writetable(EPL,"EPL2015-16.csv") % to csvs
+writetable(EPL,"EPL2015-16.txt","Delimiter","\t") % to txt with tab delimiters
+
+% You can horizontally concatenate two tables using square brackets, [], if they have the same number 
+% of observations but do not share any variable names.
+newTable = [table1 table2]
+
+% You can use the join function to merge two tables using any variables with the same names 
+% as key variables.
+newTable = join(table1,table2)
+
+tableName.Properties
+varNames = EPL.Properties.VariableNames
+
+% Use curly braces {} to extract the contents of a cell.
+regions(1,1) % --> ans = {'South America'}
+regions{1,1} % --> ans = 'South America'
+
+orig = teamInfo.Properties.VariableDescriptions{2} % Get pre-processed header column name
+teamInfo.Properties.VariableNames(2) = "Payroll" % Change variable name
+
+% Create a datetime object
+d = datetime(year,month,day,hour,minute,second)
+d = datetime(2016,2,29,17,0,0) % February 29th, 2016 17:00
+d2 = datetime((1999:1:2001)',2,1) % column vector of 01-Feb-1999, 01-Feb-2000, 01-Feb-2001
+d3 = datetime(1975,1,(1:4)) % January 1st-4th, 1975
+d4 = datetime(1990,(1:12)',1) % 12-by-1 vector d4 containing the first day of each month in the year 1990
+
+seasonStart = datetime(2015,8,8) % create a datetime object
+seasonEnd = datetime(2016,5,17) % "
+seasonLength = seasonEnd - seasonStart % --> 6792:00:00
+seasonLength = days(seasonLength) % converts to days --> 283, however this is an int not a duration
+seasonLength = days(seasonLength) % --> 283 days
+
+startTime = hours(12)
+startTime = startTime + minutes(45)
+
+t = datetime(2016,6,23)
+b = datetime(2014,5,25)
+between(b,t) % --> calendar object
+% ans = 2y 29d
+
+om = calmonths(1)
+x = seasonEnd + om % 17-Jun-2016
+
+% convert to categorical data
+y = categorical(x)
+cats = categories(y)
+
+players.Position = categorical(players.Position)
+ns = nnz(players.Position == "striker")
+summary(players.Position)
+
+y = mergecats(x,["1" "3"],"C")
+players.Position = mergecats(players.Position,["attacking midfielder","defensive midfielder", "winger"],"midfielder")
+
+x = [2 4 1 1 2 2 1 2 4]
+xlevels = ["tiny" "small" "big" "huge"]
+y = categorical(x,[1 2 3 4],xlevels)
+y = categorical(x,[1 2 3 4],xlevels,"Ordinal",true)
+
+idx = movies.Studio == "MGM"
+mgmMovies = movies.Title(idx)
+mgmARD = mean(movies.ReleaseDate(idx))
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%% Preprocessing Data %%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+% Normalising data %
+%%%%%%%%%%%%%%%%%%%%
+
+normUsage = normalize(usage);
+centeredUsage = normalize(usage,"center","mean");
+
+% You can normalize data by the first value in each column by including the "scale" 
+% argument and setting it to "first".
+xScale = normalize(X,"scale","first")
+
+rangeUsage = normalize(usage,"range",[-1 1])
+
+%%%%%%%%%%%%%%%%
+% Missing data %
+%%%%%%%%%%%%%%%%
+
+% ignore, delete or replace
+
+idx = isnan(x)
+idx = ismissing(x)
+numMissing = nnz(idx)
+
+% ignore
+xMean = mean(x,"omitnan")
+xProd = prod(x,"omitnan")
+
+% replace
+x(idx) = 0
+
+% ismissing finds only NaN values in a numeric array. 
+% You can provide an optional list of values to be considered “missing”
+ismissing(data,[val1 val2 val3 ...])
+idx = ismissing(x,[NaN,-999])
+
+xnan = standardizeMissing(x,x(idx))
+% --> 2   NaN     5     3  -999     4   NaN     0     8  -999
+% --> 2   NaN     5     3   NaN     4   NaN     0     8   NaN
+
+% delete
+% can use a live task for this or:
+[cleanX,missingIdx] = rmmissing(x)
+
+%%%%%%%%%%%%%%%%%
+% Interpolation %
+%%%%%%%%%%%%%%%%%
+
+linfill = fillmissing(usage,"linear")
+
+linfill = fillmissing(usage,"linear","SamplePoints",dates)
+hold on
+plot(dates,linfill(:,1),"o")
+hold off
+
+plot(yr,population,"o")
+% Note that a population value of 0 is clearly a missing value. 
+% In population, replace the zeros with NaN. Replot the result.
+idx = ismissing(population,[NaN,0])
+population = standardizeMissing(population,population(idx))
+plot(yr,population,"o")
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Common data analysis techniques %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%
+% Smoothing Data %
+%%%%%%%%%%%%%%%%%%
+
+% Create a vector named ySm that contains the centered 3-point moving average of y.
+% To do this, you need to set:
+% Input data to y
+% X-axis to x
+% Smoothing method to Moving mean with a Moving window that is Centered and 3 elements long
+ySm = smoothdata(y, "movmean", 3, "SamplePoints", x)
+
+% For moving window operations with a noncentered window, use a vector [kb kf] to 
+% specify the number of backward and forward points to include. kb is the number of trailing
+% (backward) points, and kf is the number of leading (forward) points.
+% For example, the following command calculates the moving average using the current 
+% point, 5 trailing points, and 2 leading points.
+dN = smoothdata(d,method,[5 2])
+
+% Use the "movmedian" method to create a vector named trail4med that contains the trailing
+% 4-point median of y 
+trail4med = smoothdata(y,"movmedian",[3,0]) % 3 behind + current point
+plot(x,trail4med,".-")
+% Create a vector named lead4med that contains the leading 4-point median of y
+lead4med = smoothdata(y,"movmedian",[0,3])
+
+%%%%%%%%%%%%%%%%%%%%%%
+% Linear Correlation %
+%%%%%%%%%%%%%%%%%%%%%%
+
+% yyaxis command to create plots with two independent scales on the vertical axis
+% allows visual comparison
+yyaxis left
+plot(t,y1)
+yyaxis right
+plot(t,y2)
+
+c = corrcoef(v1,v2)
+
+% Use plotmatrix to create a matrix of plots of all the sectors (columns) in usage 
+% against each other.
+plotmatrix(usage)
+usagecorr = corrcoef(usage)
+
+% corrcoef returns a NaN if one of the data points is missing. 
+% Specifying the "Rows" option to be "complete" ensures only sets of data without
+% missing values are included in the calculation.
+corrcoef(A,B,"Rows","complete")
+
+%%%%%%%%%%%%%%%%%%%%%%
+% Polynomial fitting %
+%%%%%%%%%%%%%%%%%%%%%%
+
+cf = polyfit(xData,yData,degree)
+yEval = polyval(cf,xEval)
+
+c = polyfit(x,y,1)
+yFit = polyval(c,x)
+
+[c,~,sc] = polyfit(x,y,deg)
+% Use centering and scaling to fit a third degree polynomial to the vector penguins as a
+% function of yr. Store the polynomial coefficients in a vector named c and the scaling
+% information in a variable called sc.
+[c,~,sc] = polyfit(yr,penguins,3) % ~ skips output
+% pass the vector of scaling coefficients sc to polyval as a fourth input
+penguinFit = polyval(c,yr,[],sc)
+
+[c,~,sc] = polyfit(x,y,deg);
+yFit = polyval(c,xFit,[],sc);
+plot(xFit,yFit)
+
+t = days( dates - dates(1) )
+[cf,~,sc] = polyfit(t,residential,3)
+tEval = polyval(cf,t,[],sc)
+hold on
+plot(dates,tEval)
+hold off
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Programming Constructs %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%
+% Outputs %
+%%%%%%%%%%%
+
+warning("Danger!")
+% --> Warning: Danger!
+
+disp("Message to the user")
+% --> Message to the user
+
+% Dialog Boxes
+msgbox("Analysis complete","Complete!")
+errordlg("Data not found","Error!")
+warndlg("Missing values.","Warning!")
+
+%%%%%%%%%%%%%%%%
+% Conditionals %
+%%%%%%%%%%%%%%%%
+
+if
+elseif
+else
+end
+
+if income < 9275
+    topRate = 0.1
+elseif 9275 <= income && income < 37650
+    topRate = 0.15
+else
+    topRate = 0.25
+end
+
+switch (expression)
+    case 1
+	% do this
+    case 2
+	% do this
+    otherwise
+	% do this
+
+switch dayNum
+    case 1
+        dayName = "Weekend"
+    case 2
+        dayName = "Monday"
+    case 3
+        dayName = "Tuesday"
+    case 4
+        dayName = "Wednesday"
+    case 5
+        dayName = "Thursday"
+    case 6
+        dayName = "Friday"
+    case 7
+        dayName = "Weekend"
+    otherwise
+        error("wut? o_O")
+end
+
+%%%%%%%%%%%%
+% For Loop %
+%%%%%%%%%%%%
+
+for k = 1:100
+    % do this
+end
+
+for  k = [ 1 2 3 4 5 6 7 8 9 10 ]
+    % do this
+end
+
+for k = [ 9 1 4 16 ]
+    % do this
+end
+
+for k = ["Hello" "there" "KENOBBIIII"]
+    k
+end
+% --> Hello
+% --> there
+% --> KENOBBIIII
+
+[yRow,yCol] = size(Year)
+len = length(countries)
+
+%%%%%%%%%%%%%%
+% While Loop %
+%%%%%%%%%%%%%%
+
+while condition
+    % do this
+end
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Increasing  Automation %%
+%%     with Functions     %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+return_value = function_name(function_input)
+
+function (return_value/s) = function_name(function_input)
+    % do this
+end
+
+%%%%%%%%%%%%%%
+% Precedence %
+%%%%%%%%%%%%%%
+% Variables
+% Functions defined in the current script
+% Files in the current folder
+% Files on MATLAB search path
+
+sum = 5
+which sum
+which sum -all
+clear sum
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% 3D Visualisations %%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+data = [8 7 6 ; 13 21 15 ; 32 27 32]
+bar(data) % bar chart with 3 sections of 3 bars
+bar(data,"stacked") % bar chart with 3 bars, with each section stacked above
+bar3(data) % 3d bar plot
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,135 @@
+% comment
+%% bold comment
+
+% camelCase
+%  ; used to hide command from output
+
+x = [1,2,3,4,5] % row vector
+y = [1;2;3;4;5] % column vector
+z = [1:5] % 1 to 5
+a = [1:0.5:5] % start value, step, end value
+b = linspace(1,10,5) % start, end, len
+
+column_vector = row_vector' % transpose
+x=rand(5) % 5x5 matrix of random numbers
+y = rand(5,1) % 5x1 matrix of random numbers
+z = zeros(6,3) % 6x3 matrix of zeroes
+size(matrix) 
+
+% indexing
+array(n)
+array(m:n)
+matrix(y,x)
+matrix(y,:)
+matrix(:,x)
+
+floor() % round own
+ceiling() round up
+
+r=v1+1 
+vs=v1+v2 
+vm=max(va)
+vr = round(va)
+
+% .* operator allows you to multiply equal sized arrays
+mass = density .* va
+
+a_size = size(a)
+[xrow,xcol] = size(x)
+[xMax,idx] = max(x)
+[~,ivMax] = max(v2) % if only one output is needed you can mute it with tilde ~
+
+% get values from v1 which are < 4
+z = v1(v1<4)
+% if value of v1 is less than 4, replace with 0
+v1(v1<4) = 0
+
+% & is and
+% | is or
+
+x = randi(range,size1,size2)
+% doc randi
+
+plot(sample,mass1)
+plot(sample,mass2,"r--o") % red dashed line with circle markers
+
+% each plot goes to a different figure, unless:
+plot(sample,mass2,"r--o")
+hold on
+plot(sample,mass1,"ks") % black square markers, no line
+
+hold off
+
+plot(array) % plots 1-n on x-axis against array on y-axis
+plot(v1,"LineWidth",3)
+plot(sample,v1,"r-o","LineWidth",4)
+
+title("_")
+xlabel("_")
+ylabel("_")
+legend("a","b","c")
+
+x = -4
+if x >= 0
+    xSqrt = sqrt(x)
+elseif x < 5
+    % do this
+else
+    % do this  
+end
+
+for x = 1:5
+    % do this
+end
+
+% for loops not always needed, could use array operators
+x = 1:5
+xSq = x.^2
+
+disp("Hello world!")
+
+% oop
+
+properties(x)
+methods(x)
+
+function obj = classname(in1,in2,...)
+    obj.Property1 = in1;
+    obj.Property2 = in2;
+    ...
+end
+
+classdef classname
+    properties
+        PropertyName (size) type {check1, check2, ...} = defaultvalue
+    end
+end
+
+properties
+    Property1 string
+    Property2 double
+    Property3 logical
+end
+
+properties
+    Scalar (1,1) double
+    Matrix (3,5) double
+    RowVector (1,:) double
+    FourColMatrix (:,4) double
+end
+
+properties
+    PositiveNumber (1,1) double {mustBePositive}
+    IntegerMatrix (3,5) double {mustBeInteger}
+    RealVector (1,:) double {mustBeReal, mustBeFinite}
+end
+
+properties (SetAccess = private)
+    Status (1,1) string
+    Participant (1,1) string
+    Course (1,1) course
+    Timestamps (:,1) datetime
+end
+properties (SetAccess = immutable)
+    SerialNumber (1,1) uint32
+end

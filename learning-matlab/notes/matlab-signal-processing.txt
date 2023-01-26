@@ -1,0 +1,166 @@
+% matlab signal processing
+
+% create sample data with noise
+
+fs = 100
+t = 0:1/fs:1
+
+sig = sin(2*pi*5*t) % 5 is freq
+plot(t,sig)
+
+noise = rand(size(sig))*0.1
+sigNoisy = sig + noise
+plot(t,sigNoisy)
+
+% read and plot signal versus time @ 1 / sample rate
+
+Ts = readmatrix("seismicstation_ts.csv")
+harpTs = Ts(1)
+harp = readtimetable("harp.csv","SampleRate",1/harpTs)
+plot(harp.Time,harp.Signal) 
+
+% select limits
+
+tstart = seconds(m)
+tend = seconds(n)
+timeLimits = timerange(tstart,tend)
+harp = harp(timeLimits,:)
+
+% view power spectrum, shows freq. content of a signal
+
+pspectrum(harp)
+pspectrum(mysig,"FrequencyLimits",[a b])
+
+% subplot?
+
+tiledlayout(a,b)
+nexttile
+plot(x,y)
+title("_")
+nexttile
+plot(x2,y2)
+title("_")
+
+% merge tables and view pspectrum
+
+quakes = synchronize(harp,pax)
+figure
+pspectrum(quakes,"FrequencyLimits",[0,1])
+
+% if the timestamps do not align it will fill the gaps with NaN
+% If you try to calculate the power spectrum of allquakes, you'll get an error because 
+% the timetable contains NaNs
+% To see the power spectrum of the wanc signal, calculate the power spectrum for wanc 
+% instead of allquakes.
+allquakes = synchronize(harp,pax,wanc)
+
+% can use the signal analyzser app in matlab to plot the signal, pspectrum, spectrogram etc
+% panner tool allows you to focus in on areas of interest
+
+% real world data is imperfect, needs to be pre-processed
+% constant timesteps
+% interpolate and resample to get uniform sample rates
+% synchronise data to find common time data
+
+y = resample(x,p,q)
+y = resample(x,2,3) 
+% resamples x to 2/3 times the original sample rate
+
+% Ts = 0.02 0.02 0.01
+% Resample WANC (0.01) --> wanc = resample(wanc,0.01,0.02)
+
+wanc = normalize(wanc)
+
+% cross correlate signals to find time delay when using multiple sources
+[c, lags] = xcorr(harp.Signal,wanc.Signal)
+plot(lags,c)
+
+% The most significant spike in the plot is located near 0. The presence of a spike is 
+% a good indication that you can find the delay between the signals with cross-correlation.
+
+harpDelay = finddelay(harp.Signal,wanc.Signal)
+
+% harpDelay is the number of lagged samples. To find the number of seconds, you can 
+% multiply the samples with the time step. 
+
+harpDelay = seconds(harpDelay*Ts(1)) % 1169 --> 23.38 secs
+
+% You could add the delay to the Time variable in harp, but it's more memory-efficient 
+% to set the StartTime property of the timetable. 
+
+tbl.Properties.PropName
+harp.Properties.StartTime = harpDelay
+
+
+[c,lags] = xcorr(pax.Signal,wanc.Signal)
+plot(lags,c)
+paxDelay = finddelay(pax.Signal,wanc.Signal)
+paxDelay = seconds(paxDelay*Ts(2))
+pax.Properties.StartTime = paxDelay
+
+quakes = synchronize(harp,pax,wanc)
+quakes.Properties.VariableNames = ["HARP","PAX","WANC"]
+stackedplot(quakes)
+tr = timerange(seconds(2800),seconds(3500))
+quakesROI = quakes(tr,:)
+stackedplot(quakesROI)
+
+% pspectrum is a fourier transform
+
+[pwr,freq] = pspectrum(tbl)
+semilogx(f,p)
+semilogx(f,db(p,"power"))
+xlabel("dB Power Spectrum")
+ylabel("Frequency (Hz)")
+legend("HARP","PAX","WANC","Location","southwest")
+
+% spectrogram uses fourier
+% scalogram uses wavelets
+
+Fourier:
+https://www.youtube.com/watch?v=spUNpyF58BY
+
+% give centre of mass of wound up graph
+1/(t2-t1) int(t2,t1) ( g(t) * e^-2pi*i*freq*time ) dt
+% actual fourier transform:
+g^(t) = int(t2,t1) ( g(t) * e^-2pi*i*freq*time ) dt
+
+# For python:
+numpy.trapz(y, x=None, dx=1.0, axis=- 1)
+
+
+pspectrum(data.Signal,data.Time,"spectrogram")
+pspectrum(quakes.WANC,quakes.Time,"spectrogram")
+pspectrum(quakes.WANC,quakes.Time,"spectrogram","FrequencyLimits",[2,10],"MinThreshold",-50)
+
+cwt(quakes.WANC,1/0.02,"FrequencyLimits",[2,10])
+caxis([0,2]) % scalograms equivalent to MinThreshold
+
+% Lowpass filter
+% Highpass, Bandpass, Bandstop
+
+lowpass(quakes(:,"WANC"),0.1)
+lowWANC = lowpass(quakes(:,"WANC"),0.1)
+sig = lowpass(tbl,pass,"Steepness",s) % defaults to 0.85
+
+compfilt = timetable(quakes.Time,bandWANC.WANC,quakes.FiltWANC, ...
+    'VariableNames',["Bandpass","Lowpass"]) % ' not "
+figure
+stackedplot(compfilt)
+xlim([seconds(2900),seconds(2950)])
+
+[p,f,t] = pspectrum(quakes.WANC,quakes.Time,"spectrogram","FrequencyLimits",[2 10],"MinThreshold",-50);
+% spectral estimates, frequencies, time instants
+psum = sum(p)
+plot(t,psum)
+pwr = db(psum,"power")
+plot(t,pwr)
+
+
+
+
+
+
+
+
+

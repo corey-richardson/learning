@@ -1,0 +1,9 @@
+C# is strongly-typed, so it requires us to specify the data types that we’re using. 
+It is also statically-typed, which means it will check that we used the correct 
+types before the program even runs.
+
+int - whole numbers, like: 1, -56, 948
+double - decimal numbers, like: 239.43909, -660.01
+char - single characters, like: “a”, “&”, “£”
+string - string of characters, like: “dog”, “hello world”
+bool - boolean values, like: true or false
