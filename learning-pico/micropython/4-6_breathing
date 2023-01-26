@@ -6,7 +6,7 @@ from machine import Pin
 import time
 
 TIMEOUT_MINUTES = 30 # Sleep mode, will auto turn off after n minutes
-NO_TIMEOUT_FLAG = 0 # 0 for false, 1 for true
+NO_TIMEOUT_FLAG = 0 # 0 for false (finite), 1 for true (infinite)
 
 red = Pin(15, Pin.OUT) # Breathe out
 green = Pin(14, Pin.OUT) # Breathe in
