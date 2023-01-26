@@ -38,7 +38,6 @@ def breathe(led, timing): # 4 for in, 6 for out
 if __name__ == "__main__":
     main()
 
-# CURRENTLY UNTESTED
-# To Test:
-# Does it run at all (hope so)
-# Does timeout / sleep mode work?
+
+# Does it run at all (hope so) YES
+# Does timeout / sleep mode work? YES
