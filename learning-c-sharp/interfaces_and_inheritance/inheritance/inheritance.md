@@ -1,3 +1,15 @@
+## Contents:
+1. [Inheritance](#inheritance)
+2. [Superclass and Subclass](#superclass-and-subclass)
+3. [Create a superclass](#create-a-superclass)
+4. [Access Inherited Members with Protected](#access-inherited-members-with-protected)
+5. [Removing Duplicate Code](#removing-duplicate-code)
+6. [Access Inherited Members with Base](#access-inherited-members-with-base)
+7. [Override Inherited Members](#override-inherited-members)
+8. [Make Inherited Members Abstract](#make-inherited-members-abstract)
+
+## Inheritance
+
 Duplicated code leads to errors. Say you have two classes `Sedan` and `Truck`. They’re different types, but they share a few properties and methods, like `SpeedUp()` and `SlowDown()`. If one of those members (say it’s `SpeedUp()`) has to change, then we would have to change the code in every location where `SpeedUp()` is defined.
 
 In this case it’s two classes, but in other programs it may be many more! There are two reasons we don’t want to make the same change on code across multiple files:
@@ -222,3 +234,45 @@ public override void SpeedUp()
 ```
 
 ---
+
+## Make Inherited Members Abstract
+
+Now we want to add one more method to `Vehicle` called `Describe()`. It will be different for every subclass, so there’s no point in defining a default one in `Vehicle`. Regardless, we want to make sure that it is implemented in each subclass.
+
+This might sound similar to an interface. Why not add this method to the `IAutomobile` interface? We want `Describe()` to be available to all vehicles, not just automobiles.
+
+To do this we need one more modifier: `abstract`. This line would go into the `Vehicle` class:
+
+```cs
+public abstract string Describe();
+```
+
+This is like the `Vehicle` class telling its subclasses: *“If you inherit from me, you must define a `Describe()` method because I won’t be giving you any default functionality to inherit.”* In other words, abstract member have no implementation in the superclass, but they must be implemented in all subclasses.
+
+If one member of a class is abstract, then the class itself can’t really exist as an instance. Imagine calling `Vehicle.Describe()`. It doesn’t make sense because it doesn’t exist! This means that the entire Vehicle class must be abstract. Label it with `abstract` as well:
+
+```cs
+abstract class Vehicle
+```
+
+If you don’t do this, you’ll get an error message like this:
+
+```
+error CS0513: 'Vehicle.Describe()' is abstract but it is contained in
+non-abstract class 'Vehicle'
+```
+
+Once we write the abstract method and mark the class as abstract, we’ll need to actually implement it in each subclass. For example in `Sedan`:
+
+```cs
+public override string Describe()
+{
+  return $"This Sedan is moving on {Wheels} wheels at {Speed} km/h, with license plate {LicensePlate}.";
+}
+```
+
+To make it clear that this `Describe()` method in `Sedan` is overriding the `Describe()` method in `Vehicle`, we will need to label it `override`.
+
+---
+
+[top](#contents)
