@@ -22,7 +22,7 @@
 ## Lesson Notes
 
 - [References of the Same Type](#references-of-the-same-type)
-- 
+- [References vs. Values](#references-vs-values)
 
 
 ---
@@ -476,3 +476,36 @@ Console.WriteLine(diss2.CurrentPage);
 You can imagine references like directions to a house: they tell you where to find the house, but they are not the house itself!
 
 --- 
+
+## References vs. Values
+
+- [references_vs_values.cs](/learning-c-sharp/references/references_vs_values.cs)
+
+To better grasp the idea of reference types, let’s look at the other kind of type: *value types*. While reference-type variables refer to a place in memory, value-type variables hold the actual data.
+
+`int` is a value type, so the variable `num` holds the value `6`:
+
+```cs
+int num = 6;
+```
+
+Reference types, on the other hand, refer to a location in memory. Every class is a reference type, so the variable `diss` refers to a location in memory that has the `Dissertation` object:
+
+```cs
+Dissertation diss = new Dissertation(50);
+```
+
+Every “primitive” data type is a value type, including:
+
+- int
+- double
+- bool
+- char
+
+Revisiting our metaphor: a reference is like directions to a house, which “points” to a house. It isn’t the actual house. A value type is the house itself!
+
+You might have noticed that ```string``` is missing here. It works a bit differently, so it will be covered in a later lesson.
+
+While reference-type variables refer to a place in memory, value-type variables hold the actual data.
+
+---
