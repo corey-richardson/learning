@@ -5,28 +5,28 @@ Links: [amazon-uk](https://www.amazon.co.uk/dp/1718502702?psc=1&ref=ppx_yo2ov_dt
 ---
 
 ## Part I: Basics
-- Getting Started 
-- Variables and Simple Data Types
-- Introducing Lists
-- Working with Lists
-- if Statements
-- Dictionaries
-- User input and While Loops
-- Functions
-- Classes
-- Files and Exceptions
-- Testing Your Code
+- [ ] Getting Started 
+- [ ] Variables and Simple Data Types
+- [ ] Introducing Lists
+- [ ] Working with Lists
+- [ ] if Statements
+- [ ] Dictionaries
+- [ ] User input and While Loops
+- [ ] Functions
+- [ ] Classes
+- [ ] Files and Exceptions
+- [ ] Testing Your Code
 
 ## Part II: Projects
-- A Ship That Fires Bullets
-- Aliens! 👽
-- Scoring
-- Generating Data
-- Downloading Data
-- Working with APIs
-- Getting Started with Django
-- User Accounts
-- Styling and Deploying an App
+- [ ] A Ship That Fires Bullets
+- [ ] Aliens! 👽
+- [ ] Scoring
+- [ ] Generating Data
+- [ ] Downloading Data
+- [ ] Working with APIs
+- [ ] Getting Started with Django
+- [ ] User Accounts
+- [ ] Styling and Deploying an App
 
 ## Appendices
 - A: Installation and Troubleshooting
