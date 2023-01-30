@@ -445,7 +445,7 @@ string s4 = null;
 
 ## References of the Same Type
 
-- [references_of_the_same_type.cs](/learning-c-sharp/references/references_of_the_same_type.cs)
+- [references_of_the_same_type.cs](/learning-c-sharp/references/reference_fundamentals/references_of_the_same_type.cs)
 
 Classes are *reference types*. That means that when we create a new instance of a class and store it in a variable, the variable is a *reference* to the object.
 
@@ -484,7 +484,7 @@ You can imagine references like directions to a house: they tell you where to fi
 
 ## References vs. Values
 
-- [references_vs_values.cs](/learning-c-sharp/references/references_vs_values.cs)
+- [references_vs_values.cs](/learning-c-sharp/references/reference_fundamentals/references_vs_values.cs)
 
 To better grasp the idea of reference types, let’s look at the other kind of type: *value types*. While reference-type variables refer to a place in memory, value-type variables hold the actual data.
 
@@ -517,7 +517,7 @@ While reference-type variables refer to a place in memory, value-type variables 
 
 ## References vs. Value Comparison
 
-- [references_vs_value_comparison.cs](/learning-c-sharp/references/references_vs_value_comparison.cs)
+- [references_vs_value_comparison.cs](/learning-c-sharp/references/reference_fundamentals/references_vs_value_comparison.cs)
 
 When we compare value types with ==, the C# compiler performs a value comparison. For example, this prints true because the value 6 is equal to the value 6:
 
@@ -543,10 +543,10 @@ We constructed two different Dissertation objects which happened to have the sam
 
 ## References of Different Types
 
-- [references_of_different_types](/learning-c-sharp/references/references_of_different_types/)
-- [Program.cs](/learning-c-sharp/references/references_of_different_types/Program.cs)
-- [Book.cs](/learning-c-sharp/references/references_of_different_types/Book.cs)
-- [IFlippable.cs](/learning-c-sharp/references/references_of_different_types/IFlippable.cs)
+- [references_of_different_types](/learning-c-sharp/references/reference_fundamentals/references_of_different_types/)
+- [Program.cs](/learning-c-sharp/references/reference_fundamentals/references_of_different_types/Program.cs)
+- [Book.cs](/learning-c-sharp/references/reference_fundamentals/references_of_different_types/Book.cs)
+- [IFlippable.cs](/learning-c-sharp/references/reference_fundamentals/references_of_different_types/IFlippable.cs)
 
 Before going any further, let’s remind ourselves that `Dissertation` implements `IFlippable`, which has the `CurrentPage` property and `Flip()` method. You’ll need this info in a minute.
 
@@ -592,7 +592,7 @@ Title is defined for Book, so no error is thrown there. Define(), however, is no
 
 ## Arrays of References
 
-- [arrays_of_references.cs](/learning-c-sharp/references/arrays_of_references.cs)
+- [arrays_of_references.cs](/learning-c-sharp/references/reference_fundamentals/arrays_of_references.cs)
 
 We know that we can use inherited classes and implemented interfaces to reference an object:
 
@@ -639,10 +639,10 @@ We can only access the functionality defined in the interface. For example, we c
 
 ## Polymorphism
 
-- [polymorphism](/learning-c-sharp/references/polymorphism/)
-- [Program.cs](/learning-c-sharp/references/polymorphism/Program.cs)
-- [Book.cs](/learning-c-sharp/references/polymorphism/Book.cs)
-- [Diary.cs](/learning-c-sharp/references/polymorphism/Diary.cs)
+- [polymorphism](/learning-c-sharp/references/reference_fundamentals/polymorphism/)
+- [Program.cs](/learning-c-sharp/references/reference_fundamentals/polymorphism/Program.cs)
+- [Book.cs](/learning-c-sharp/references/reference_fundamentals/polymorphism/Book.cs)
+- [Diary.cs](/learning-c-sharp/references/reference_fundamentals/polymorphism/Diary.cs)
 
 We just saw how useful it is to have the same interface for multiple data types. This is a common concept across many programming languages, and it’s called polymorphism.
 
@@ -698,7 +698,7 @@ You’ll never have to write polymorphism in your code, but this vocabulary is e
 
 ## Casting
 
-- [casting.cs](/learning-c-sharp/references/casting.cs)
+- [casting.cs](/learning-c-sharp/references/reference_fundamentals/casting.cs)
 
 So far we’ve referred to objects with a reference of their own type, an inherited type, or an implemented interface:
 
@@ -752,7 +752,7 @@ There are multiple ways to deal with downcasting, including the as and is operat
 
 ## Null and Unassigned References
 
-- [null_and_unassigned_references.cs](/learning-c-sharp/references/null_and_unassigned_references.cs)
+- [null_and_unassigned_references.cs](/learning-c-sharp/references/reference_fundamentals/null_and_unassigned_references.cs)
 
 So far we’ve seen:
 
