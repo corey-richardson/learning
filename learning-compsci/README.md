@@ -1,7 +1,6 @@
 # learning-compsci
 
-Following Codecademy's Computer Science Career Path
-<br> [link](https://www.codecademy.com/learn/paths/computer-science)
+Following [Codecademy's Computer Science Career Path](https://www.codecademy.com/learn/paths/computer-science)
 
 > Interested in the fundamentals of computer science with Python? This path offers a flexible and accessible method for learning computer science whether you’re interested in studying CS or looking to level up your theoretical knowledge for technical screens.
 
