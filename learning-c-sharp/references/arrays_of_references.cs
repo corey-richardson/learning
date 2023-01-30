@@ -19,9 +19,7 @@ namespace LearnReferences
       foreach (Book book in books){
         // 3. In the body of the loop, print out the Title of each element.
         Console.WriteLine( book.Title );
-
-      }
-      
+      }  
     }
   }
 }
