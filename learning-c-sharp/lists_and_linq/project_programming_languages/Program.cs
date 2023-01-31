@@ -92,7 +92,7 @@ namespace ProgrammingLanguages
         }
       
       // You might have also used foreach loops to print every query result in
-      // this project. Write a method PrintAll() that handles that for us
+      // this project. Write a method PrintAll() that handles that for us.
       public static void PrintAll(IEnumerable<Object> query)
       {
         foreach(string query_item in query)
