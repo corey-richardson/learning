@@ -73,3 +73,99 @@ If you inadvertently remove the single link to a node, that node’s data and an
 
 > my hands are cold and i'm struggling to type
 
+--- 
+
+Which of the following methods implemented in the Node class are required to establish a Node class with an accessible but immutable value?
+
+```py
+class Node:
+  def __init__(self, value, link_node=None):
+       self.value = value
+       self.link_node = link_node
+  def get_value(self):
+   return self.value
+  def get_link_node(self):
+   return self.link_node
+  def set_link_node(self, link_node):
+   self.link_node = link_node
+  def set_value(self, value):
+   self.value = value
+  def increment_value(self):
+    self.value = self.value + 1
+```
+
+> .__init__(), .get_value(), .get_link_node(), and .set_link_node()
+
+---
+
+Consider the following nodes and links: a -> n -> t. If you want to remove node n, but preserve node t, what are the steps you would take?
+
+- Delete the link on a that points to n using a.set_link_node(None).
+- Remove the link on n using n.set_link_node(None).
+- Change the link on a to point to t using t.set_link_node(a).
+- Change the link on a to point to t using a.set_link_node(t).
+
+> Change the link on a to point to t using a.set_link_node(t).
+
+---
+
+A node containing only null pointers indicates what?
+
+- No other nodes link to this node.
+- You are at the end of the node path you were following.
+- The node has no data.
+- There are no other nodes in the data structure.
+
+> You are at the end of the node path you were following.
+
+---
+
+Consider the following nodes and links: a -> n -> t. If you want to remove node n, but preserve node t, what should the resulting structure look like?
+
+- a n->t
+- a -> t
+- t -> a
+- a -> n
+
+> a -> t
+
+---
+
+Which two features do most nodes contain?
+
+- Data and links to other nodes.
+- Data and an array containing other nodes.
+- Data and null pointers.
+- Arrays and pointers to other nodes.
+
+> Data and links to other nodes.
+
+---
+
+# Linked Lists
+
+Linked lists are one of the basic data structures used in computer science. They have many direct applications and serve as the foundation for more complex data structures.
+
+The list is comprised of a series of nodes
+
+```
+Data
+Link --> Data
+         Link --> Data
+                  Link
+```
+    
+Common operations on a linked list may include:
+- adding nodes
+- removing nodes
+- finding a node
+- traversing (or traveling through) the linked list
+
+Linked Lists:
+- Are comprised of nodes
+- The nodes contain a link to the next node (and also the previous node for bidirectional linked lists)
+- Can be unidirectional or bidirectional
+- Are a basic data structure, and form the basis for many other data structures
+- Have a single head node, which serves as the first node in the list
+- Require some maintenance in order to add or remove nodes
+- The methods we used are an example and depend on the exact use case and/or programming language being used
