@@ -62,3 +62,16 @@ namespace LearnLinq
     }
   }
 }
+
+/*
+Output:
+queryResult:
+D. Va contains an 'a'
+Pharah contains an 'a'
+Reinhardt contains an 'a'
+
+methodResult:
+D. Va contains an 'a'
+Pharah contains an 'a'
+Reinhardt contains an 'a'
+*/
