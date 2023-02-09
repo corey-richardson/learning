@@ -24,3 +24,15 @@ Difference:
 
 Symmetric Difference:
 - The symmetric difference can be found using set or frozenset containers with the .symmetric_difference() method or ^ operator.
+
+
+---
+
+Complete the code to update the set with the difference of sets.
+
+```py
+zip_codes = {46077, 31404, 75080, 21060, 18080}
+remove_zip_codes = {19013, 75080, 46077}
+```
+
+> zip_codes.difference_update(remove_zip_codes)
