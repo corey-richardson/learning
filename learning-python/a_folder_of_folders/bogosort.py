@@ -1,7 +1,7 @@
 # bogosort
-# this thing is disgusting
 
 n = 1000
+list_length = 5
 
 from itertools import permutations
 from random import sample
@@ -13,7 +13,7 @@ start = time.perf_counter()
 iterations = []
 for i in range(n):
     # Generate a random list
-    unsorted_list = list(randint(0,100) for i in range(5))
+    unsorted_list = list(randint(0,100) for i in range(list_length))
     
     # Calculate the number of possible permutations for a list of that size
     p = permutations(unsorted_list) # creates an iterable
