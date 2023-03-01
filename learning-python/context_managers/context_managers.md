@@ -74,3 +74,28 @@ After running the code, our output of this context manager would be:
 4. `__exit__` method
 
 ---
+
+Let’s walk through a context manager that manages actual files as well as explore each of the methods we saw earlier. Here is what our context manager will look like:
+
+```py
+class WorkWithFile:
+  def __init__(self, file, mode):
+    self.file = file
+    self.mode = mode
+
+def __enter__(self):
+  self.opened_file = open(self.file, self.mode)
+  return self.opened_file
+
+def __exit__(self, *exc):
+  self.opened_file.close()
+```
+
+Now that we created our context manager, we can now use it in a with statement like so:
+
+```py
+with WorkWithFile("file.txt", "r") as file:
+  print(file.read())
+```
+
+---
