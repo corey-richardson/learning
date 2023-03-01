@@ -148,3 +148,22 @@ In contrast, if no error occurs in the with statement above, the __exit__ method
     None
     None
     None
+
+---
+
+Let’s imagine we have two files: a teacher.txt file and a student.txt. We want to copy all the information on the student file to the teachers. Our code might look like this:
+
+```py
+with open('teacher.txt', 'w') as teacher, open('student.txt', 'r') as student:
+    teacher.write(student.read())
+```
+
+We can also write the above nested context managers in a slightly different way:
+
+```py
+with open("teacher.txt", "w") as teacher:
+    with open("student.txt", "r") as student:
+        teacher.write(student.read())
+```
+
+This method, though slightly longer gives a clearer visual of nesting and is preferable when working with more than two context managers.
