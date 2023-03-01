@@ -99,3 +99,52 @@ with WorkWithFile("file.txt", "r") as file:
 ```
 
 ---
+
+Within a context manager, the __exit__ method is responsible for dealing with any exceptions. It can implement how to close the file and any other operations we want to perform if an exception occurs.
+
+The __exit__ method has three required arguments (in addition to self):
+
+1. An exception type: which indicates the class of exception (i.e. AttributeError class, or NameError class)
+2. An exception value: the actual value of the error
+3. A traceback: a report detailing the sequence of steps that caused the error and all the details needed to fix the error.
+
+```py
+class OpenFile:
+ 
+ def __init__(self, file, mode):
+   self.file = file
+   self.mode = mode
+ 
+ def __enter__(self):
+   self.opened_file = open(self.file, self.mode)
+   return self.opened_file
+ 
+ def __exit__(self, exc_type, exc_val, traceback):
+   print(exc_type)
+   print(exc_val)
+   print(traceback)
+   self.opened_file.close()
+
+with OpenFile("file.txt", "r") as file:
+  # .see() is not a real method
+  print(file.see())
+```
+
+```
+<class 'AttributeError'>
+'_io.TextIOWrapper' object has no attribute 'see'
+<traceback object at 0x7f08dcfb5040>
+```
+
+```
+Traceback (most recent call last):
+  File "script.py", line 14, in <module>
+    print(file.see())
+AttributeError: '_io.TextIOWrapper' object has no attribute 'see'
+```
+
+In contrast, if no error occurs in the with statement above, the __exit__ method would have printed:
+
+    None
+    None
+    None
