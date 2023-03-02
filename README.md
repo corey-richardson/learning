@@ -12,7 +12,7 @@
 
 > Improve my Python Knowledge and Experience.
 - [CS50's Introduction to Programming with Python](https://cs50.harvard.edu/python/2022/) `completed`
-- [Codecademy's Learn Intermediate Python 3](https://www.codecademy.com/learn/learn-intermediate-python-3) `in progress`
+- [Codecademy's Learn Intermediate Python 3](https://www.codecademy.com/learn/learn-intermediate-python-3) `completed`
 - [Codecademy's Learn Advanced Python 3](https://www.codecademy.com/learn/learn-advanced-python)
 - [Software Engineering for Data Scientists Skill Path](https://www.codecademy.com/learn/paths/software-engineering-for-data-scientists)
 > Learn more about Computer Science in general and apply this knowledge to programming.
