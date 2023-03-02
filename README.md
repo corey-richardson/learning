@@ -6,6 +6,9 @@
 - learning-compsci
 - learning-cpp
 - learning-frontend
+  - learning-html
+  - learning-css
+  - learning-javascript
 - learning-matlab
 - learning-pico
 - learning-python
