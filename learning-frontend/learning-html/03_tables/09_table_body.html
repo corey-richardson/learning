@@ -1,0 +1,85 @@
+<!--
+Over time, a table can grow to contain a lot of data and become very long. 
+When this happens, the table can be sectioned off so that it is easier to 
+manage.
+
+Long tables can be sectioned off using the table body element: <tbody>.
+
+The <tbody> element should contain all of the table’s data, excluding 
+the table headings.
+-->
+
+<!-- 
+Enclose rows 2, 3, 4, 5, 6, and 7 of the table in a <tbody> element. 
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ship To It - Company Packing List</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato: 100,300,400,700|Luckiest+Guy|Oxygen:300,400"
+      rel="stylesheet"
+    />
+    <link href="style.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body>
+    <ul class="navigation">
+      <li>
+        <img
+          src="https://content.codecademy.com/courses/web-101/unit-9/htmlcss1-img_logo-shiptoit.png"
+          height="20px;"
+        />
+      </li>
+      <li class="active">Action List</li>
+      <li>Profiles</li>
+      <li>Settings</li>
+    </ul>
+
+    <div class="search">Search the table</div>
+
+    <table>
+      <tr>
+        <th>Company Name</th>
+        <th>Number of Items to Ship</th>
+        <th>Next Action</th>
+      </tr>
+
+      <tbody>
+
+        <tr>
+          <td colspan="2">Adam's Greenworks</td>
+          <td>14</td>
+          <td>Package Items</td>
+        </tr>
+        <tr>
+          <td rowspan="2">Davie's Burgers</td>
+          <td>2</td>
+          <td>Send Invoice</td>
+        </tr>
+        <tr>
+          <td>Baker's Bike Shop</td>
+          <td>3</td>
+          <td>Send Invoice</td>
+        </tr>
+        <tr>
+          <td>Miss Sally's Southern</td>
+          <td>4</td>
+          <td>Ship</td>
+        </tr>
+        <tr>
+          <td>Summit Resort Rentals</td>
+          <td>4</td>
+          <td>Ship</td>
+        </tr>
+        <tr>
+          <td>Strike Fitness</td>
+          <td>1</td>
+          <td>Enter Order</td>
+        </tr>
+
+      </tbody>
+      
+    </table>
+  </body>
+</html>
