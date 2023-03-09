@@ -34,7 +34,7 @@
 - [Codecademy's Data Scientist: Machine Learning Specialist Career Path](https://www.codecademy.com/learn/paths/data-science)
 - [Codecademy's Machine Learning/AI Engineer Career Path](https://www.codecademy.com/learn/paths/machine-learning-engineer)
 - [CS50’s Introduction to Artificial Intelligence with Python](https://cs50.harvard.edu/ai/2020/)
-> Learn Web Development for Archery Club Webmaster Positon
+> Learn Web Development for Archery Club Webmaster Position
 - [Codecademy's Front-End Engineer Career Path](https://www.codecademy.com/learn/paths/front-end-engineer-career-path) `in progress`
 - [Codecademy's Full-Stack Software Engineer Career Path](https://www.codecademy.com/learn/paths/full-stack-engineer-career-path)
 - [freeCodeCamp's Responsive Web Design](https://www.freecodecamp.org/learn/2022/responsive-web-design/)
