@@ -1,0 +1,99 @@
+<!--
+Data can span columns using the colspan attribute. 
+The attribute accepts an integer (greater than or equal to 1) to denote the 
+number of columns it spans across.
+-->
+
+<!--
+<table>
+  <tr>
+    <th>Monday</th>
+    <th>Tuesday</th>
+    <th>Wednesday</th>
+  </tr>
+  <tr>
+    <td colspan="2">Out of Town</td>
+    <td>Back in Town</td>
+  </tr>
+</table>
+-->
+
+<!-- In index.html, span a <td> element across two columns. -->
+
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>Ship To It - Company Packing List</title>
+        <link
+          href="https://fonts.googleapis.com/css?family=Lato: 100,300,400,700|Luckiest+Guy|Oxygen:300,400"
+          rel="stylesheet"
+        />
+        <link href="style.css" type="text/css" rel="stylesheet" />
+      </head>
+      <body>
+        <ul class="navigation">
+          <li>
+            <img
+              src="https://content.codecademy.com/courses/web-101/unit-9/htmlcss1-img_logo-shiptoit.png"
+              height="20px;"
+            />
+          </li>
+          <li class="active">Action List</li>
+          <li>Profiles</li>
+          <li>Settings</li>
+        </ul>
+    
+        <div class="search">Search the table</div>
+    
+        <table>
+          <tr>
+            <th scope="col">Company Name</th>
+            <th scope="col">Number of Items to Ship</th>
+            <th scope="col">Next Action</th>
+          </tr>
+          <tr>
+            <td>Adam's Greenworks</td>
+            <td>14</td>
+            <td>Package Items</td>
+          </tr>
+          <tr>
+            <td>Davie's Burgers</td>
+            <td>2</td>
+            <td>Send Invoice</td>
+          </tr>
+          <tr>
+            <td>Baker's Bike Shop</td>
+            <td>3</td>
+            <td>Send Invoice</td>
+          </tr>
+          <tr>
+            <td>Miss Sally's Southern</td>
+            <td>4</td>
+            <td>Ship</td>
+          </tr>
+          <tr>
+            <td>Summit Resort Rentals</td>
+            <td>4</td>
+            <td>Ship</td>
+          </tr>
+          <tr>
+            <td>Strike Fitness</td>
+            <td>1</td>
+            <td>Enter Order</td>
+          </tr>
+          <tr>
+            <td colspan="2">Spannnnner wooooooooooooooooo</td>
+            <td>spanner</td>
+          </tr>
+        </table>
+      </body>
+    </html>
+    
+
+<!--
+OUTPUTS:
+
+...
+Strike Fitness	    1	        Enter Order
+Spannnnner wooooooooooooooooo	spanner
+-->
