@@ -1,23 +1,25 @@
 # learning
 
-- learning-aspnet
-- learning-c-sharp
-- learning-c
-- learning-compsci
-  - computer_architecture
-  - data_structures_and_algorithms
-  - databases
-  - discrete_maths
-- learning-cpp
-- learning-frontend
-  - learning-html
-  - learning-css
-  - learning-javascript
-- learning-matlab
-- learning-pico
-  - c-cpp
-  - micropython
-- learning-python
+[learning-log](learning-log.md)
+
+- [learning-aspnet](learning-aspnet)
+- [learning-c-sharp](learning-c-sharp)
+- [learning-c](learning-c)
+- [learning-compsci](learning-compsci)
+  - [computer_architecture](learning-compsci/computer_architecture)
+  - [data_structures_and_algorithms](learning-compsci/data_structures_and_algorithms)
+  - [databases](learning-compsci/databases)
+  - [discrete_maths](learning-compsci/discrete_maths)
+- [learning-cpp](learning-cpp)
+- [learning-frontend](learning-frontend)
+  - [learning-html](learning-frontend/learning-html)
+  - [learning-css](learning-frontend/learning-css)
+  - [learning-javascript](learning-frontend/learning-javascript)
+- [learning-matlab](learning-matlab)
+- [learning-pico](learning-pico)
+  - [c-cpp](learning-pico/c-cpp)
+  - [micropython](learning-pico/micropython)
+- [learning-python](learning-python)
 
 > Improve my Python Knowledge and Experience.
 - [CS50's Introduction to Programming with Python](https://cs50.harvard.edu/python/2022/) `completed`
