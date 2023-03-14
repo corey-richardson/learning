@@ -7,7 +7,7 @@ d_times = []
 timeout_counter = 0
 # create output file name by replacing ".extension" with "_processed.extension"
 output_file = input_file.name.replace(".","_processed.")
-# create the destination file
+# create the destination file, or overwrite empty if it already exists
 with open(output_file, "w"):
     pass
 
